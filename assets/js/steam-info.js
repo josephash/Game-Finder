@@ -8,7 +8,7 @@ const apis = {
         url: 'https://api.steampowered.com',
         key: '28601A11DEF818194204A0AB6F7EF1F3',
     },
-    steam: {
+    steamStore: {
         url: 'https://store.steampowered.com/api',
     },
 }
@@ -52,7 +52,7 @@ function steamworksAPI(arguments) {
         .catch(error => console.error('Error:', error));
 }
 
-function steamAPI(arguments) {
+function steamStoreAPI(arguments) {
     let parameters = [];
     let urlParts = [];
     let request = '';
@@ -64,7 +64,7 @@ function steamAPI(arguments) {
         urlParts.push(apis.proxy.url);
         options.headers['x-cors-api-key'] = apis.proxy.key;
     }
-    urlParts.push(apis.steam.url);
+    urlParts.push(apis.steamStore.url);
     if (arguments.method) {
         urlParts.push(arguments.method);
     } else {
@@ -91,29 +91,49 @@ function steamAPI(arguments) {
         .catch(error => console.error('Error:', error));
 }
 
-async function getFromSteam(game, detail) {
+// returns the entire list of steam games
+async function getAllGames() {
+    let callInfo = {
+        useProxy: true,
+        method: 'ISteamApps/GetAppList/v2',
+        parameters: [],
+    };
+    return await steamworksAPI(callInfo);
+}
+
+function findAppID(game) {
 
 }
 
+async function getSteamAspect(game, aspect) {
+    let callInfo = {
+        useProxy: true,
+        method: 'appdetails',
+        parameters: ['appids=954850'],
+    };
+    let output = await steamStoreAPI(callInfo);
+    for (let i in Object.keys(output['954850'].data)) {
+        console.log(Object.keys(output['954850'].data)[i]);
+    }
+    return;
+}
 
 async function test(opt) {
     if (opt === 1) {
         let testCall = {
-            api: 'steamworks',
             useProxy: true,
-            method: 'ISteamNews/GetNewsForApp/v2',
-            parameters: ['appid=954850', 'count=3', 'format=json'],
+            method: 'ISteamApps/GetAppList/v2',   //'ISteamNews/GetNewsForApp/v2',
+            parameters: [],   //'appid=954850', 'count=3', 'format=json'
         };
         let output = await steamworksAPI(testCall);
         console.log(output);
     } else if (opt === 2) {
         let testCall = {
-            api: 'steam',
             useProxy: true,
             method: 'appdetails',
             parameters: ['appids=954850'],
         };
-        let output = await steamAPI(testCall);
+        let output = await steamStoreAPI(testCall);
         console.log(output);
     }
 }
