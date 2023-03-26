@@ -2,7 +2,7 @@
 const apis = {
     proxy: {
         url: 'https://proxy.cors.sh',
-        key: 'temp_c6c6b4fc3bd0de71e35b4d7dd3ec950e',   // renew cors-api here: https://cors.sh/
+        key: 'temp_d177400ee032206c55c6c1fcf70af978',   // renew cors-api here: https://cors.sh/
     },
     steamworks: {
         url: 'https://api.steampowered.com',
@@ -102,30 +102,57 @@ async function getAllGames() {
     };
     applist = (await steamworksAPI(callInfo)).applist.apps;
     isListCompleted = true;
-    return applist;
+    return;
 }
-// returns the appID of the game's exact title
+// returns the appID of the game's exact title (NOTE: returns -1 if the game cannot be found)
 function findID(game) {
-    
+    if (isListCompleted) {
+        for (let i in applist) {
+            let app = applist[i];
+            if (app.name == game) {
+                return app.appid;
+            }
+        }
+    } else {
+        return -1;
+    }
 }
-// searches for the closest game that matches the input
+// [WORK IN PROGRESS] searches for the closest game that matches the input
 function searchGames(searchInput, returnAmount = 1) {
     
 }
 // returns an aspect/detail of the game
-async function getSteamAspect(game, aspect) {
+async function getSteamAspect(game, aspect = null) {
+    if (!isListCompleted) {
+        console.error('Error: List of games has not generated yet');
+        return;
+    }
+    let appID = findID(game);
+    if (appID == -1) {
+        console.error('Error: Could not find a game under the name \'' + game + '\' - an exact match is required');
+        return;
+    }
     let callInfo = {
         useProxy: true,
         method: 'appdetails',
-        parameters: ['appids=954850'],
+        parameters: ['appids=' + appID],
     };
-    let output = await steamStoreAPI(callInfo);
-    let list = [];
-    for (let i in Object.keys(output['954850'].data)) {
-        list.push(Object.keys(output['954850'].data)[i]);
-        //console.log(Object.keys(output['954850'].data)[i]);
-        //console.log(output['954850'].data[Object.keys(output['954850'].data)[i]]);
+    let results = await steamStoreAPI(callInfo);
+    let detail;
+    if (aspect) {
+        detail = results[appID].data[aspect];
+    } else {
+        detail = results[appID].data;
     }
-    console.log(list);
-    return;
+    if (detail == null) {
+        console.error('Error: Aspect not found');
+        return;
+    }
+    console.log(detail);
+    return detail;
 }
+
+//getAllGames();
+// setTimeout(() => {
+//     getSteamAspect('Kerbal Space Program', 'steam_appid');
+// }, 7500);
