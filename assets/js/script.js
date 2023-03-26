@@ -98,3 +98,21 @@ submitBtn.addEventListener("click", submitForm);
 function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
+
+// define function to get a specific aspect for a game on Steam
+async function getSteamAspect(game, aspect) {
+  const response = await fetch(`=${game}`);
+  const data = await response.json();
+  return data.game.availableGameStats.stats.find(stat => stat.name === aspect);
+}
+
+async function getAllGames() {
+  try {
+    const response = await fetch("");
+    const data = await response.json();
+    return data.applist.apps;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
