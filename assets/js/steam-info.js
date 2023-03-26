@@ -2,7 +2,7 @@
 const apis = {
     proxy: {
         url: 'https://proxy.cors.sh',
-        key: 'temp_c6ae07b832a51711be95d9d1b1b52c09',   // renew cors-api here: https://cors.sh/
+        key: 'temp_c6c6b4fc3bd0de71e35b4d7dd3ec950e',   // renew cors-api here: https://cors.sh/
     },
     steamworks: {
         url: 'https://api.steampowered.com',
@@ -13,7 +13,10 @@ const apis = {
     },
 }
 
-// calls the Steam API with the given interface and method
+var applist;
+var isListCompleted = false;
+
+// calls the Steam Web API with the given interface and method
 function steamworksAPI(arguments) {
     let parameters = [];
     let urlParts = [];
@@ -51,7 +54,7 @@ function steamworksAPI(arguments) {
         })
         .catch(error => console.error('Error:', error));
 }
-
+// calls the Steam Store API with the given interface and method
 function steamStoreAPI(arguments) {
     let parameters = [];
     let urlParts = [];
@@ -90,7 +93,6 @@ function steamStoreAPI(arguments) {
         })
         .catch(error => console.error('Error:', error));
 }
-
 // returns the entire list of steam games
 async function getAllGames() {
     let callInfo = {
@@ -98,13 +100,19 @@ async function getAllGames() {
         method: 'ISteamApps/GetAppList/v2',
         parameters: [],
     };
-    return await steamworksAPI(callInfo);
+    applist = (await steamworksAPI(callInfo)).applist.apps;
+    isListCompleted = true;
+    return applist;
 }
-
-function findAppID(game) {
-
+// returns the appID of the game's exact title
+function findID(game) {
+    
 }
-
+// searches for the closest game that matches the input
+function searchGames(searchInput, returnAmount = 1) {
+    
+}
+// returns an aspect/detail of the game
 async function getSteamAspect(game, aspect) {
     let callInfo = {
         useProxy: true,
@@ -112,29 +120,12 @@ async function getSteamAspect(game, aspect) {
         parameters: ['appids=954850'],
     };
     let output = await steamStoreAPI(callInfo);
+    let list = [];
     for (let i in Object.keys(output['954850'].data)) {
-        console.log(Object.keys(output['954850'].data)[i]);
+        list.push(Object.keys(output['954850'].data)[i]);
+        //console.log(Object.keys(output['954850'].data)[i]);
+        //console.log(output['954850'].data[Object.keys(output['954850'].data)[i]]);
     }
+    console.log(list);
     return;
 }
-
-async function test(opt) {
-    if (opt === 1) {
-        let testCall = {
-            useProxy: true,
-            method: 'ISteamApps/GetAppList/v2',   //'ISteamNews/GetNewsForApp/v2',
-            parameters: [],   //'appid=954850', 'count=3', 'format=json'
-        };
-        let output = await steamworksAPI(testCall);
-        console.log(output);
-    } else if (opt === 2) {
-        let testCall = {
-            useProxy: true,
-            method: 'appdetails',
-            parameters: ['appids=954850'],
-        };
-        let output = await steamStoreAPI(testCall);
-        console.log(output);
-    }
-}
-//test(1);
