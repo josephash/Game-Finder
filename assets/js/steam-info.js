@@ -17,7 +17,7 @@ var applist;
 var isListCompleted = false;
 
 // calls the Steam Web API with the given interface and method
-function steamworksAPI(arguments) {
+function steamworksAPI(args) {
     let parameters = [];
     let urlParts = [];
     let request = '';
@@ -25,19 +25,19 @@ function steamworksAPI(arguments) {
         headers: {},
     };
     // assemble url parts
-    if (arguments.useProxy) {
+    if (args.useProxy) {
         urlParts.push(apis.proxy.url);
         options.headers['x-cors-api-key'] = apis.proxy.key;
     }
     urlParts.push(apis.steamworks.url);
-    if (arguments.method) {
-        urlParts.push(arguments.method);
+    if (args.method) {
+        urlParts.push(args.method);
     } else {
         console.error('Error: API method not provided');
     }
     parameters.push('key=' + apis.steamworks.key);
-    for (let i in arguments.parameters) {
-        parameters.push(arguments.parameters[i]);
+    for (let i in args.parameters) {
+        parameters.push(args.parameters[i]);
     }
     // complete url
     request = urlParts.join('/') + '?' + parameters.join('&');
@@ -55,7 +55,7 @@ function steamworksAPI(arguments) {
         .catch(error => console.error('Error:', error));
 }
 // calls the Steam Store API with the given interface and method
-function steamStoreAPI(arguments) {
+function steamStoreAPI(args) {
     let parameters = [];
     let urlParts = [];
     let request = '';
@@ -63,18 +63,18 @@ function steamStoreAPI(arguments) {
         headers: {},
     };
     // assemble url parts
-    if (arguments.useProxy) {
+    if (args.useProxy) {
         urlParts.push(apis.proxy.url);
         options.headers['x-cors-api-key'] = apis.proxy.key;
     }
     urlParts.push(apis.steamStore.url);
-    if (arguments.method) {
-        urlParts.push(arguments.method);
+    if (args.method) {
+        urlParts.push(args.method);
     } else {
         console.error('Error: API method not provided');
     }
-    if (arguments.parameters) {
-        parameters = arguments.parameters;
+    if (args.parameters) {
+        parameters = args.parameters;
     } else {
         console.error('Error: method parameters not provided');
     }
@@ -94,7 +94,7 @@ function steamStoreAPI(arguments) {
         .catch(error => console.error('Error:', error));
 }
 // returns the entire list of steam games
-async function getAllGames() {
+export async function getAllGames() {
     let callInfo = {
         useProxy: true,
         method: 'ISteamApps/GetAppList/v2',
@@ -105,7 +105,7 @@ async function getAllGames() {
     return;
 }
 // returns the appID of the game's exact title (NOTE: returns -1 if the game cannot be found)
-function findID(game) {
+export function findID(game) {
     if (isListCompleted) {
         for (let i in applist) {
             let app = applist[i];
@@ -122,7 +122,7 @@ function searchGames(searchInput, returnAmount = 1) {
     
 }
 // returns an aspect/detail of the game
-async function getSteamAspect(game, aspect = null) {
+export async function getSteamAspect(game, aspect = null) {
     if (!isListCompleted) {
         console.error('Error: List of games has not generated yet');
         return;
