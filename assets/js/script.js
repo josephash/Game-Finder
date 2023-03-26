@@ -56,7 +56,7 @@ function displayGames() {
   const wow = document.getElementById("wow");
   const wii = document.getElementById("wii");
   const cod = document.getElementById("cod");
-  const minecraft = document.getElementById("minecraft");
+ // const minecraft = document.getElementById("minecraft");
 
   if (pokemon.checked || mario1.checked || ff.checked) {
     games.push("Pokemon", "Mario", "Final Fantasy");
@@ -73,9 +73,9 @@ function displayGames() {
   if (cod.checked) {
     games.push("Call of Duty");
   }
-  if (minecraft.checked) {
-    games.push("Minecraft");
-  }
+ //  if (minecraft.checked) {
+ //    games.push("Minecraft");
+ // }
 
   if (games.length === 0) {
     return "Based on your answers, we couldn't find any recommended games.";
@@ -91,6 +91,7 @@ function displayGames() {
 
 // define variables for the submit button and add an event listener to it
 const submitBtn = document.getElementById("submit-btn");
+console.log (submitBtn)
 submitBtn.addEventListener("click", submitForm);
 
 // define function to handle submitting the form
