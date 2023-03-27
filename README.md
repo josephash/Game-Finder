@@ -6,11 +6,15 @@
 
 ## Usage (Nothing specific yet, add when completed.)
 Step 1. Click start
-    (pictures)
+![screenshot](/assets/ss1.png)
 
-Step 2. Answer the prompt given with (A-? or T/F format)
+Step 2. Answer the prompt given with however many choices you'd like. 
+![screenshot](/assets/ss2.png)
 
-Step 3. Finish your quiz (add the page of the end)
+
+Step 3. Finish your quiz
+![screenshot](/assets/ss3.png)
+
 
 Step 4. Look at the new game you should try! (add note on what info is what yada yada)
 

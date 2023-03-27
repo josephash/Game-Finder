@@ -51,6 +51,7 @@ function nextPage() {
   }
 }
 
+
 // define function to display the recommended games based on user answers
 function displayGames() {
   let games = [];
