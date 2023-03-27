@@ -90,6 +90,11 @@ function displayGames() {
   } else {
     let gameList = "Based on your answers, we recommend the following games: <ul>";
     for (let i = 0; i < games.length; i++) {
+      // gets aspects for game
+      let shortDesc = steam.getSteamAspect(games[i], 'short_description');
+      let categories = steam.getSteamAspect(games[i], 'categories');
+      let screenshots = steam.getSteamAspect(games[i], 'screenshots');
+      
       gameList += "<li>" + games[i] + "</li>";
     }
     gameList += "</ul>";
@@ -106,5 +111,3 @@ submitBtn.addEventListener("click", submitForm);
 function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
-
-// let result = steam.getSteamAspect('Minecraft', 'Type');
