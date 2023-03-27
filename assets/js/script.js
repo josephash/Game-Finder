@@ -1,3 +1,5 @@
+import * as steam from "./steam-info.js";
+
 // define variables for each page and the current page number
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
@@ -99,20 +101,6 @@ function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
 
-// define function to get a specific aspect for a game on Steam
-async function getSteamAspect(game, aspect) {
-  const response = await fetch(`=${game}`);
-  const data = await response.json();
-  return data.game.availableGameStats.stats.find(stat => stat.name === aspect);
-}
+// let result = steam.getSteamAspect('Minecraft', 'Type');
 
-async function getAllGames() {
-  try {
-    const response = await fetch("");
-    const data = await response.json();
-    return data.applist.apps;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
-}
+steam.getAllGames();
