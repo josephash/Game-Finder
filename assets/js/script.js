@@ -83,8 +83,18 @@ function displayGames() {
     return "Based on your answers, we couldn't find any recommended games.";
   } else {
     let gameList = "Based on your answers, we recommend the following games: <ul>";
-    for (let i = 0; i < recommendedGames.length; i++) {
+<<<<<<< HEAD
+    // for (let i = 0; i < recommendedGames.length; i++) {
       gameList += "<li>" + recommendedGames[i] + "</li>";
+=======
+   //  for (let i = 0; i < games.length; i++) {
+      // gets aspects for game
+   //   let shortDesc = steam.getSteamAspect(games[i], 'short_description');
+     // let categories = steam.getSteamAspect(games[i], 'categories');
+      //let screenshots = steam.getSteamAspect(games[i], 'screenshots');
+      
+     // gameList += "<li>" + games[i] + "</li>";
+>>>>>>> // f0112d468da24d5e4ab6c146ed790e2ef1f0b798
     }
     gameList += "</ul>";
     return gameList;
