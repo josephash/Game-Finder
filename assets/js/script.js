@@ -1,4 +1,4 @@
-import * as steam from "./steam-info.js";
+// import * as steam from "./steam-info.js";
 
 // define variables for each page and the current page number
 const page1 = document.getElementById("page1");
@@ -45,6 +45,7 @@ function nextPage() {
     document.getElementById("results").innerHTML = displayGames();
   }
 }
+
 
 // define function to display the recommended games based on user answers
 function displayGames() {
@@ -101,6 +102,7 @@ function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
 
-// let result = steam.getSteamAspect('Minecraft', 'Type');
+let result = steam.getSteamAspect('Pokemon', 'Type', 'detailed_description', 'categories');
+
 
 steam.getAllGames();
