@@ -84,6 +84,21 @@ body {
 
  }
 
+  /* Style for the 5th next button */
+  #next-btn5 {
+    border: 2px solid;
+    margin: 0.5em;
+    padding: 0.5em;
+    display: inline-block;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+  
+   }
+
 
   /* Style for the checkboxes */
   label {

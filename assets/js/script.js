@@ -53,49 +53,44 @@ function nextPage() {
 
 
 // define function to display the recommended games based on user answers
+// define function to display the recommended games based on user answers
 function displayGames() {
-  let games = [];
-  const pokemon = document.getElementById("pokemon");
-  const mario1 = document.getElementById("mario1");
-  const ff = document.getElementById("ff");
+  let recommendedGames = [];
+  const destiny = document.getElementById("destiny");
+  const dota2 = document.getElementById("dota2");
+  const eldenring = document.getElementById("elden-ring");
   const pacMan = document.getElementById("pac-man");
-  const spaceInvaders = document.getElementById("space-invaders");
-  const mario2 = document.getElementById("mario2");
-  const wow = document.getElementById("wow");
-  const wii = document.getElementById("wii");
-  const cod = document.getElementById("cod");
- // const minecraft = document.getElementById("minecraft");
+  const spaceinvadersextreme = document.getElementById("space-invaders-extreme");
+  const warThunder = document.getElementById("war-thunder");
+  const finalFantasyXIV = document.getElementById("final-fantasy-xiv");
+  const rust = document.getElementById("rust");
+  const assettoCorsa = document.getElementById("assetto-corsa");
 
-  if (pokemon.checked || mario1.checked || ff.checked) {
-    games.push("Pokemon", "Mario", "Final Fantasy");
+  if (destiny.checked || dota2.checked || eldenring.checked) {
+    recommendedGames.push("Destiny", "Dota 2", "Elden Ring");
   }
-  if (pacMan.checked || spaceInvaders.checked || mario2.checked) {
-    games.push("Pac-Man", "Space Invaders", "Mario");
+  if (pacMan.checked || spaceinvadersextreme.checked) {
+    recommendedGames.push("Pac-Man", "Space Invaders Extreme");
   }
-  if (wow.checked) {
-    games.push("World of Warcraft");
+  if (warThunder.checked || finalFantasyXIV.checked || rust.checked) {
+    recommendedGames.push("War Thunder", "Final Fantasy XIV", "Rust");
   }
-  if (wii.checked) {
-    games.push("Wii Sports", "Mario Party");
+  if (assettoCorsa.checked || fifa23.checked) {
+    recommendedGames.push("Assetto Corsa", "FIFA 23");
   }
-  if (cod.checked) {
-    games.push("Call of Duty");
-  }
- //  if (minecraft.checked) {
- //    games.push("Minecraft");
- // }
 
-  if (games.length === 0) {
+  if (recommendedGames.length === 0) {
     return "Based on your answers, we couldn't find any recommended games.";
   } else {
     let gameList = "Based on your answers, we recommend the following games: <ul>";
-    for (let i = 0; i < games.length; i++) {
-      gameList += "<li>" + games[i] + "</li>";
+    for (let i = 0; i < recommendedGames.length; i++) {
+      gameList += "<li>" + recommendedGames[i] + "</li>";
     }
     gameList += "</ul>";
     return gameList;
   }
 }
+
 
 // define variables for the submit button and add an event listener to it
 const submitBtn = document.getElementById("submit-btn");
@@ -107,4 +102,4 @@ function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
 
-// let result = steam.getSteamAspect('Minecraft', 'Type');
+let result = steam.getSteamAspect('Minecraft', 'short_description');
