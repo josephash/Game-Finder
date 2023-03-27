@@ -1,4 +1,9 @@
-import * as steam from "./steam-info.js";
+var steam;
+async function imp() {
+  steam = await import('./steam-info.js');
+  steam.getAllGames();
+}
+imp();
 
 // define variables for each page and the current page number
 const page1 = document.getElementById("page1");
@@ -102,5 +107,3 @@ function submitForm() {
 }
 
 // let result = steam.getSteamAspect('Minecraft', 'Type');
-
-steam.getAllGames();

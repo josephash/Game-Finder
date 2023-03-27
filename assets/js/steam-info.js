@@ -148,11 +148,5 @@ export async function getSteamAspect(game, aspect = null) {
         console.error('Error: Aspect not found');
         return;
     }
-    console.log(detail);
     return detail;
 }
-
-//getAllGames();
-// setTimeout(() => {
-//     getSteamAspect('Kerbal Space Program', 'steam_appid');
-// }, 7500);
