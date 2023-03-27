@@ -12,7 +12,79 @@ body {
   h2 {
     margin-top: 20px;
   }
-  
+
+  /* Style for the start button */
+  #start-btn {
+	margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+ /* Style for the first next button */
+ #next-btn1 {
+  border: 2px solid;
+	margin: 0.5em;
+	padding: 0.5em;
+	display: inline-block;
+	text-transform: uppercase;
+  cursor: pointer;
+	padding: 10px;
+  color: white;
+  border-radius: 5px;
+  background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+
+ }
+ /* Style for the second next button */
+ #next-btn2 {
+  border: 2px solid;
+	margin: 0.5em;
+	padding: 0.5em;
+	display: inline-block;
+	text-transform: uppercase;
+  cursor: pointer;
+	padding: 10px;
+  color: white;
+  border-radius: 5px;
+  background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+
+ }
+ /* Style for the third next button */
+ #next-btn3 {
+  border: 2px solid;
+	margin: 0.5em;
+	padding: 0.5em;
+	display: inline-block;
+	text-transform: uppercase;
+  cursor: pointer;
+	padding: 10px;
+  color: white;
+  border-radius: 5px;
+  background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+
+ }
+ /* Style for the fourth next button */
+ #next-btn4 {
+  border: 2px solid;
+	margin: 0.5em;
+	padding: 0.5em;
+	display: inline-block;
+	text-transform: uppercase;
+  cursor: pointer;
+	padding: 10px;
+  color: white;
+  border-radius: 5px;
+  background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+
+ }
+
+
   /* Style for the checkboxes */
   label {
     display: inline-block;
