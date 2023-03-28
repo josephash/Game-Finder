@@ -5,40 +5,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+   
   </head>
-  
   <body>
     <div id="page1">
       <h1>Game Finder</h1>
-      <p>Answer a few questions and we'll recommend some games for you!</p>
-      <button id="start-btn" onclick="showPage('#page2')">Start</button>
+      <p>Answer a few questions and we'll recommend some games for you.</p>
+      <button onclick="showPage('#page2')">Start</button>
+
     </div>
 
-    <div id="page2" style="display:none;">
+    <!-- <div id="page2" style="display:none;">
       <h2>Do you like role playing games?</h2>
-      <input type="checkbox" id="destiny" name="destiny" value="Destiny" />
-      <label for="destiny">destiny</label>
+      <input type="checkbox" id="pokemon" name="pokemon" value="pokemon" />
+      <label for="pokemon">Pokemon</label>
       <br />
-      <input type="checkbox" id="dota2" name="dota2" value="Dota 2" />
-      <label for="dota2">Dota 2</label>
+      <input type="checkbox" id="mario1" name="mario1" value="mario1" />
+      <label for="mario1">Mario</label>
       <br />
-      <input type="checkbox" id="elden-ring" name="elden-ring" value="Elden Ring" />
-      <label for="elden-ring">Elden Ring</label>
+      <input type="checkbox" id="ff" name="ff" value="ff" />
+      <label for="ff">Final Fantasy</label>
       <br />
-      <button id="next-btn1" onclick="showPage('#page3')">Next</button>
+      <button onclick="showPage('#page3')">Next</button>
     </div>
+ -->
+ <div id="page2" style="display:none;">
+  <h2>Do you like role playing games?</h2>
+  <input type="checkbox" id="destiny" name="destiny" value="Destiny" />
+  <label for="destiny">Destiny</label>
+  <br />
+  <input type="checkbox" id="dota2" name="dota2" value="Dota 2" />
+  <label for="dota2">Dota 2</label>
+  <br />
+  <input type="checkbox" id="elden-ring" name="elden-ring" value="Elden Ring" />
+  <label for="elden-ring">Elden Ring</label>
+  <br />
+  <button id="next-btn1" onclick="showPage('#page3')">Next</button>
+</div>
 
-    <div id="page3" style="display:none;">
+    <!-- <div id="page3" style="display:none;">
       <h2>Do you like classic arcade games?</h2>
-      <input type="checkbox" id="space-invaders-extreme" name="space-invaders-extreme" value="Space Invaders Extreme" />
-      <label for="space-invaders-extreme">Space Invaders Extreme</label>
+      <input type="checkbox" id="pac-man" name="pac-man" value="pac-man" />
+      <label for="pac-man">Pac-Man</label>
       <br />
-      <input type="checkbox" id="pac-man-museum" name="pac-man-museum" value="Pac-Man Museum+" />
-      <label for="pac-man-museum">Pac-Man Museum+</label>
+      <input type="checkbox" id="space-invaders" name="space-invaders" value="space-invaders" />
+      <label for="space-invaders">Space Invaders</label>
       <br />
-      <button id="next-btn2" onclick="showPage('#page4')">Next</button>
+      <input type="checkbox" id="mario2" name="mario2" value="mario2" />
+      <label for="mario2">Mario</label>
+      <br />
+      <button onclick="showPage('#page4')">Next</button>
     </div>
+ -->
+ <div id="page3" style="display:none;">
+  <h2>Do you like classic arcade games?</h2>
+  <input type="checkbox" id="space-invaders-extreme" name="space-invaders-extreme" value="Space Invaders Extreme" />
+  <label for="space-invaders-extreme">Space Invaders Extreme</label>
+  <br />
+  <input type="checkbox" id="pac-man-museum" name="pac-man-museum" value="Pac-Man Museum+" />
+  <label for="pac-man-museum">Pac-Man Museum+</label>
+  <br />
+  <button id="next-btn2" onclick="showPage('#page4')">Next</button>
+</div>
 
+   <!--  <div id="page4" style="display:none;">
+      <h2>Do you like MMO’s (massive multiplayer online games)?</h2>
+      <input type="checkbox" id="wow" name="wow" value="wow" />
+      <label for="wow">World of Warcraft</label>
+      <br />
+      <button onclick="showPage('#page5')">Next</button>
+    </div> -->
     <div id="page4" style="display:none;">
       <h2>Do you like MMO's (massive multiplayer online games)?</h2>
       <input type="checkbox" id="war-thunder" name="war-thunder" value="War Thunder" />
@@ -53,6 +89,18 @@
       <button id="next-btn3" onclick="showPage('#page5')">Next</button>
     </div>
 
+
+   <!--  <div id="page5" style="display:none;">
+      <h2>Do you like family focused games?</h2>
+      <input type="checkbox" id="wii" name="wii" value="wii" />
+      <label for="wii">Wii Sports</label>
+      <br />
+      <input type="checkbox" id="mario-party" name="mario-party" value="mario-party" />
+      <label for="mario-party">Mario Party</label>
+      <br />
+      <button onclick="showPage('#page6')">Next</button>
+    </div> -->
+
     <div id="page5" style="display:none;">
       <h2>Do you like simulator games?</h2>
       <input type="checkbox" id="assetto-corsa" name="assetto-corsa" value="Assetto Corsa" />
@@ -60,12 +108,17 @@
     </div>
     
 
-    <div id="page6" class="page">
-      <h2>Results</h2>
-      <div id="results"></div>
-      <button id="submit-btn">Submit</button>
-    </div>
-        <script type="module" src="./assets/js/steam-info.js"></script>
+  <!--   <div id="page6" style="display:none;">
+        <h2>Do you like first person shooters with a campaign?</h2>
+        <input type="checkbox" id="cod" name="cod" value="cod" />
+        <label for="cod">Call of Duty</label>
+      </div> -->
+      
+      <div id="page6" class="page">
+        <h2>Results</h2>
+        <div id="results"></div>
+        <button id="submit-btn">Submit</button>
+      </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="./assets/js/script.js"></script>
         </body>

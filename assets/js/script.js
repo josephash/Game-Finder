@@ -1,10 +1,3 @@
-var steam;
-async function imp() {
-  steam = await import('./steam-info.js');
-  steam.getAllGames();
-}
-imp();
-
 // define variables for each page and the current page number
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
@@ -51,15 +44,13 @@ function nextPage() {
   }
 }
 
-
-// define function to display the recommended games based on user answers
 // define function to display the recommended games based on user answers
 function displayGames() {
   let recommendedGames = [];
   const destiny = document.getElementById("destiny");
   const dota2 = document.getElementById("dota2");
   const eldenring = document.getElementById("elden-ring");
-  const pacMan = document.getElementById("pac-man");
+  const pacMan = document.getElementById("pac-man-museum");
   const spaceinvadersextreme = document.getElementById("space-invaders-extreme");
   const warThunder = document.getElementById("war-thunder");
   const finalFantasyXIV = document.getElementById("final-fantasy-xiv");
@@ -69,38 +60,30 @@ function displayGames() {
   if (destiny.checked || dota2.checked || eldenring.checked) {
     recommendedGames.push("Destiny", "Dota 2", "Elden Ring");
   }
-  if (pacMan.checked || spaceinvadersextreme.checked) {
+   if (pacMan.checked || spaceinvadersextreme.checked) {
     recommendedGames.push("Pac-Man", "Space Invaders Extreme");
-  }
+  } 
   if (warThunder.checked || finalFantasyXIV.checked || rust.checked) {
     recommendedGames.push("War Thunder", "Final Fantasy XIV", "Rust");
   }
-  if (assettoCorsa.checked || fifa23.checked) {
-    recommendedGames.push("Assetto Corsa", "FIFA 23");
+  if (assettoCorsa.checked) {
+    recommendedGames.push("Assetto Corsa");
   }
+ //  if (minecraft.checked) {
+ //    games.push("Minecraft");
+ // }
 
   if (recommendedGames.length === 0) {
     return "Based on your answers, we couldn't find any recommended games.";
   } else {
     let gameList = "Based on your answers, we recommend the following games: <ul>";
-<<<<<<< HEAD
-    // for (let i = 0; i < recommendedGames.length; i++) {
+    for (let i = 0; i < recommendedGames.length; i++) {
       gameList += "<li>" + recommendedGames[i] + "</li>";
-=======
-   //  for (let i = 0; i < games.length; i++) {
-      // gets aspects for game
-   //   let shortDesc = steam.getSteamAspect(games[i], 'short_description');
-     // let categories = steam.getSteamAspect(games[i], 'categories');
-      //let screenshots = steam.getSteamAspect(games[i], 'screenshots');
-      
-     // gameList += "<li>" + games[i] + "</li>";
->>>>>>> // f0112d468da24d5e4ab6c146ed790e2ef1f0b798
     }
     gameList += "</ul>";
     return gameList;
   }
 }
-
 
 // define variables for the submit button and add an event listener to it
 const submitBtn = document.getElementById("submit-btn");
@@ -111,5 +94,3 @@ submitBtn.addEventListener("click", submitForm);
 function submitForm() {
   document.getElementById("results").innerHTML = displayGames();
 }
-
-let result = steam.getSteamAspect('Minecraft', 'short_description');
