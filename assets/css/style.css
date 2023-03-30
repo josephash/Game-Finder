@@ -1,11 +1,41 @@
 /* Style for all pages */
 body {
     font-family: Arial, sans-serif;
+    background-image: url("../images/computers1.jpg");
+    background-color: #2196F3;
+    
   }
   
   /* Style for the first page */
   #page1 {
     text-align: center;
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
+  }
+  /*Style for second page */
+  #page2 {
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
+  }
+/*Style for third page */
+  #page3 {
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
+  }
+/*Style for fourth page */
+  #page4 {
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
+  }
+/*Style for fifth page */
+  #page5 {
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
+  }
+/*Style for sixth page */
+  #page6 {
+    background-image: url("../images/platformer1.jpg");
+    color:#eee;
   }
   
   /* Style for the questions */
@@ -27,6 +57,9 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+
  /* Style for the first next button */
  #next-btn1 {
   border: 2px solid;
@@ -83,6 +116,21 @@ body {
   background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
 
  }
+
+  /* Style for the 5th next button */
+  #next-btn5 {
+    border: 2px solid;
+    margin: 0.5em;
+    padding: 0.5em;
+    display: inline-block;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    background: linear-gradient(-60deg, #4CAF50 50%, green 50%);
+  
+   }
 
 
   /* Style for the checkboxes */
@@ -161,4 +209,3 @@ body {
     margin-top: 20px;
     text-align: center;
   }
-  

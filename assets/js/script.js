@@ -1,10 +1,3 @@
-var steam;
-async function imp() {
-  steam = await import('./steam-info.js');
-  steam.getAllGames();
-}
-imp();
-
 // define variables for each page and the current page number
 const page1 = document.getElementById("page1");
 const page2 = document.getElementById("page2");
@@ -51,51 +44,41 @@ function nextPage() {
   }
 }
 
-
 // define function to display the recommended games based on user answers
 function displayGames() {
-  let games = [];
-  const pokemon = document.getElementById("pokemon");
-  const mario1 = document.getElementById("mario1");
-  const ff = document.getElementById("ff");
-  const pacMan = document.getElementById("pac-man");
-  const spaceInvaders = document.getElementById("space-invaders");
-  const mario2 = document.getElementById("mario2");
-  const wow = document.getElementById("wow");
-  const wii = document.getElementById("wii");
-  const cod = document.getElementById("cod");
- // const minecraft = document.getElementById("minecraft");
+  let recommendedGames = [];
+  const destiny = document.getElementById("destiny");
+  const dota2 = document.getElementById("dota2");
+  const eldenring = document.getElementById("elden-ring");
+  const pacMan = document.getElementById("pac-man-museum");
+  const spaceinvadersextreme = document.getElementById("space-invaders-extreme");
+  const warThunder = document.getElementById("war-thunder");
+  const finalFantasyXIV = document.getElementById("final-fantasy-xiv");
+  const rust = document.getElementById("rust");
+  const assettoCorsa = document.getElementById("assetto-corsa");
 
-  if (pokemon.checked || mario1.checked || ff.checked) {
-    games.push("Pokemon", "Mario", "Final Fantasy");
+  if (destiny.checked || dota2.checked || eldenring.checked) {
+    recommendedGames.push("Destiny", "Dota 2", "Elden Ring");
   }
-  if (pacMan.checked || spaceInvaders.checked || mario2.checked) {
-    games.push("Pac-Man", "Space Invaders", "Mario");
+   if (pacMan.checked || spaceinvadersextreme.checked) {
+    recommendedGames.push("Pac-Man", "Space Invaders Extreme");
+  } 
+  if (warThunder.checked || finalFantasyXIV.checked || rust.checked) {
+    recommendedGames.push("War Thunder", "Final Fantasy XIV", "Rust");
   }
-  if (wow.checked) {
-    games.push("World of Warcraft");
-  }
-  if (wii.checked) {
-    games.push("Wii Sports", "Mario Party");
-  }
-  if (cod.checked) {
-    games.push("Call of Duty");
+  if (assettoCorsa.checked) {
+    recommendedGames.push("Assetto Corsa");
   }
  //  if (minecraft.checked) {
  //    games.push("Minecraft");
  // }
 
-  if (games.length === 0) {
+  if (recommendedGames.length === 0) {
     return "Based on your answers, we couldn't find any recommended games.";
   } else {
     let gameList = "Based on your answers, we recommend the following games: <ul>";
-    for (let i = 0; i < games.length; i++) {
-      // gets aspects for game
-      let shortDesc = steam.getSteamAspect(games[i], 'short_description');
-      let categories = steam.getSteamAspect(games[i], 'categories');
-      let screenshots = steam.getSteamAspect(games[i], 'screenshots');
-      
-      gameList += "<li>" + games[i] + "</li>";
+    for (let i = 0; i < recommendedGames.length; i++) {
+      gameList += "<li>" + recommendedGames[i] + "</li>";
     }
     gameList += "</ul>";
     return gameList;
